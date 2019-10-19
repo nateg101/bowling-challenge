@@ -1,33 +1,46 @@
 'use strict';
 
 function Bowling(){
-  this.START_SCORE = 0
-  this._score = this.START_SCORE
-  this._throwOne = false
-  this._throwTwo = false
-  this._frame = 1
-}
+  this._score = [[0],[null,null],[null,null],[null,null],[null,null],[null,null],[null,null],
+  [null,null],[null,null],[null,null],[null,null],[null,null]];
+  this._frame = 1;
+};
 
 Bowling.prototype.getCurrentScore = function(){
-  return this._score;
+  var score
+  score = 0
+  var i
+  for(i = 1; i < this.getCurrentFrame(i); i ++){
+    score += this.frameScore(i)
+  }
+  return score;
 }
 
 Bowling.prototype.getCurrentFrame = function(){
   return this._frame;
 }
 
-Bowling.prototype.throw = function(pins){
-  if(this._throwOne === false) {
-    this._throwOne = pins;
+Bowling.prototype.frameScore = function(frame){
+  if(this.standardScore(frame) == 10) {
+    return this.spare(frame);
   } else {
-    this._throwTwo = pins;
-    this.endFrame();
+    return this.standardScore(frame);
   };
 }
 
-Bowling.prototype.endFrame = function(){
-  this._frame++
-  this._score += this._throwOne + this._throwTwo
-  this._throwOne = false
-  this._throwTwo = false
+Bowling.prototype.standardScore = function(frame){
+  return this._score[frame].reduce((a,b) => a + b, 0)
+}
+
+Bowling.prototype.spare = function(frame){
+  return 10 + this._score[frame + 1][0]
+}
+
+Bowling.prototype.throw = function(pins){
+  if(this._score[this._frame ][0] === null) {
+    this._score[this._frame ][0] = pins;
+  } else {
+    this._score[this._frame][1] = pins
+    this._frame++
+  };
 }
