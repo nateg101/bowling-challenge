@@ -33,6 +33,13 @@ describe('Bowling', function(){
       bowling.throw(3)
       expect(bowling.getCurrentScore()).toEqual(13)
     });
+
+    it('scores one strike correctly', function(){
+      bowling.throw(10)
+      bowling.throw(4)
+      bowling.throw(1)
+      expect(bowling.getCurrentScore()).toEqual(20)
+    })
   })
 
   describe('increasing frame number', function(){
