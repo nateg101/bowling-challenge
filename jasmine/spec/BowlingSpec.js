@@ -39,7 +39,15 @@ describe('Bowling', function(){
       bowling.throw(4)
       bowling.throw(1)
       expect(bowling.getCurrentScore()).toEqual(20)
-    })
+    });
+
+    it('scores correctly after a double strike', function(){
+      bowling.throw(10)
+      bowling.throw(10)
+      bowling.throw(4)
+      bowling.throw(2)
+      expect(bowling.getCurrentScore()).toEqual(46)
+    });
   })
 
   describe('increasing frame number', function(){

@@ -21,24 +21,35 @@ Bowling.prototype.getCurrentFrame = function(){
 }
 
 Bowling.prototype.frameScore = function(frame){
-  if(this._score[frame][0] == 10){
+  if(this.isStrike(frame)){
     return this.strike(frame);
-  } else if(this.standardScore(frame) == 10) {
+  } else if(this.isSpare(frame)) {
     return this.spare(frame);
   } else {
     return this.standardScore(frame);
-  };
+  }
 }
 
 Bowling.prototype.standardScore = function(frame){
   return this._score[frame].reduce((a,b) => a + b, 0)
 }
 
+Bowling.prototype.isStrike = function (frame) {
+  if(this._score[frame][0] == 10) { return true }
+};
+
+Bowling.prototype.isSpare = function (frame) {
+  if(this.standardScore(frame) == 10) { return true }
+};
+
 Bowling.prototype.spare = function(frame){
   return 10 + this._score[frame + 1][0]
 }
 
 Bowling.prototype.strike = function(frame){
+  if(this.isStrike(frame + 1)) {
+    return 20 + this._score[frame + 2][0]
+  }
   return 10 + this.standardScore(frame + 1)
 }
 
