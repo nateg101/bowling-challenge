@@ -58,4 +58,37 @@ describe('Bowling', function(){
     });
   });
 
+  describe('ending the game', function(){
+    it('after 20 throws', function() {
+      var i;
+      for(i = 1; i <= 20; i++) {
+        bowling.throw(0)
+      }
+      expect(bowling.getCurrentFrame()).toEqual(10)
+      expect(bowling.getCurrentScore()).toEqual(0)
+      expect(bowling.gameOver).toEqual(true)
+    })
+
+    it('after 12 Strikes', function(){
+      var i;
+      for(i = 1; i <= 12; i++) {
+        bowling.throw(10)
+      }
+      expect(bowling.getCurrentFrame()).toEqual(12)
+      expect(bowling.getCurrentScore()).toEqual(300)
+      expect(bowling.gameOver).toEqual(true)
+    })
+
+    it('after 10 spares', function(){
+      var i;
+      for(i = 1; i <= 21; i++) {
+        bowling.throw(5)
+        bowling.throw(5)
+      }
+      expect(bowling.getCurrentFrame()).toEqual(11)
+      expect(bowling.getCurrentScore()).toEqual(150)
+      expect(bowling.gameOver).toEqual(true)
+    })
+  });
+
 })
