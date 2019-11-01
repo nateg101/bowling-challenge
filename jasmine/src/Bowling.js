@@ -9,7 +9,7 @@ function Bowling(){
 Bowling.prototype.throw = function(pins){
   if(this.gameOver == true) { return }
 
-  if(this.scores[this._frame][0] === false) {
+  if(this.isFirstThrow()) {
     this.scores[this._frame][0] = pins;
     if(pins == 10) {
       this.scores[this._frame][1] = 0;
@@ -78,4 +78,18 @@ Bowling.prototype.isSpare = function(frame) {
 
 Bowling.prototype.isStandard = function(frame) {
   if(this.standardScore(frame) < 10) { return true }
+}
+
+Bowling.prototype.isFirstThrow = function() {
+  if(this.score[this._frame][0] === false) { return true }
+}
+
+Bowling.prototype.displayScore = function(frame) {
+  if(this.isStrike(frame)) {
+    return 'X'
+  } else if(this.isSpare(frame)) {
+    return '/'
+  } else {
+    return this.standardScore(frame)
+  }
 }

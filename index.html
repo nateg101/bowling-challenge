@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <script src="jasmine/src/Bowling.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Bowling</title>
+</head>
+
+<body>
+  <h1> Just Keep Bowling' Bowlin'... </h1>
+
+  <h2 id="total_score"> Game Score </h2>
+  <div class="score_buttons">
+    <input type="number" id="throw" min="0" max="10">
+    <input type="button" name="submit" id="submit" value="Enter Throw">
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <table id="bowling_frame" style="width:50%">
+        <tr>
+          <th id="frame">Frame</th>
+          <th id="throw1">Bowl 1</th>
+          <th id="throw2">Bowl 2</th>
+          <th id="score">Score</th>
+          <th id="total">Total</th>
+        </tr>
+      </table>
+    </div>
+  </div <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+  </script>
+  <script src="jasmine/src/Bowling.js"></script>
+  <script src="jasmine/src/interface.js"></script>
+</body>
+
 </html>
