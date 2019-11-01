@@ -81,7 +81,7 @@ Bowling.prototype.isStandard = function(frame) {
 }
 
 Bowling.prototype.isFirstThrow = function() {
-  if(this.score[this._frame][0] === false) { return true }
+  if(this.scores[this._frame][0] === false) { return true }
 }
 
 Bowling.prototype.displayScore = function(frame) {
