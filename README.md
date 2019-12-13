@@ -10,6 +10,13 @@ Bowling Challenge
 * The score of each frame is the number of pins knocked down plus strike and spare bonuses.
 * Pins are reset after each frame.
 
+### How to Use
+
+1. Installation - `$ git clone`
+2. Run tests - open `SpecRunner.html`
+3. Frontend - open `index.html`
+
+
 
 ### User Story 1
 
